@@ -134,7 +134,8 @@ reading a single file for 10 seconds.*
 this makes you *actually understand your own project* so you don't need any.
 
 **Does anything leave my machine?** No. Repo, transcripts, and scorecard are all local;
-it runs on your own Claude Code session.
+it runs inside your own agent session. The skill is markdown plus one HTML template —
+no telemetry, no network calls. Full boundaries in [SECURITY.md](SECURITY.md).
 
 **No session logs for this repo?** It still works — you get the repo-only interview,
 minus the history-derived questions. Repos with agent-written progress notes or ADRs

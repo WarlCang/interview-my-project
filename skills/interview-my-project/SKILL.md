@@ -1,6 +1,10 @@
 ---
 name: interview-my-project
 description: Run a mock technical interview about the current repository, in any language the user prefers. Use when the user asks to be interviewed, grilled, quizzed, or drilled about their project/repo/codebase (in English, 中文, or any other language), wants interview prep for a portfolio project, or asks "can I defend this code". Reads the repo and (when available) local agent session logs, asks staff-engineer-quality questions one at a time, scores answers honestly, and tracks readiness across sessions.
+license: MIT
+metadata:
+  version: "0.2.0"
+  author: WarlCang
 ---
 
 # interview-my-project
@@ -138,14 +142,33 @@ everything. Resolve that asymmetry the way a real interview works:
   chunk size?", "how do you know it isn't hallucinating?", "what did you try that
   didn't work?").
 
+## Evidence integrity (non-negotiable)
+
+The product is grounded pressure; one invented citation destroys it. Operational
+rules, every phase:
+
+- A verdict, jab, or coaching card may cite `file:line` only if you actually read
+  that line this session. Never cite from memory of how such projects usually look.
+- Session-log and doc quotes are verbatim or absent. Never reconstruct, trim into a
+  different meaning, or paraphrase-as-quote.
+- If your answer key is thin on something the candidate said, say plainly "I can't
+  verify that against your code" and score only what you can verify. An honest gap
+  in your evidence outranks a confident bluff — the exact standard you hold them to.
+- Scores come from the rubric, never from the candidate's confidence or fluency.
+- Never claim to have read files or logs you didn't. If ingest was partial, the
+  debrief says so.
+
 ---
 
 ## Phase 1 — Ingest (silent, fast)
 
 1. Check for `.interview/scorecard.json` in the repo root. If it exists, this is a
    returning candidate: load their re-queued weak questions and note the readiness trend.
-2. Scan the repo: structure, manifest/dependency files, entry points, and the 5–10 files
-   where real decisions live (skip vendored code, lockfiles, generated files).
+2. Scan the repo on a reading budget: list the tree, then read at most ~15 files —
+   manifests and entry points in full, everything else headers-and-skim first. Skip
+   vendored code, lockfiles, generated files. Full-read a file only once a probe
+   targets it; never bulk-load a directory into context. The interview needs that
+   context space more than the scan does.
 3. Mine agent session logs per the method below. If none exist, note it once and
    continue repo-only.
 4. If your environment supports subagents, you may delegate steps 2–3 to one (in Claude
@@ -254,6 +277,7 @@ hidden answer key. Write it to `.interview/questions.json`:
 
 ```json
 {
+  "schema_version": 1,
   "generated": "<ISO date>",
   "questions": [
     {
@@ -350,6 +374,7 @@ Update `.interview/scorecard.json`:
 
 ```json
 {
+  "schema_version": 1,
   "sessions": [
     {
       "date": "<ISO date>",
