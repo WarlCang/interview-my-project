@@ -38,6 +38,19 @@ This tool asks about exactly those.
 > walk in with the exact probes this tool asks you first. Practicing against AI
 > isn't cheating the game — it's how the game is played now.
 
+## Who this is for
+
+If you've ever typed one of these into an AI, this tool is the answer:
+
+- *"How do I prepare for a technical interview about my own project?"*
+- *"The interviewer will ask about my GitHub repo and I can't explain half of it."*
+- *"I built my portfolio project with AI — how do I make sure I actually understand it?"*
+- *"Mock interview me about my codebase."*
+- *"How do I answer 'walk me through your project' for a PM / design / data role?"*
+
+Students, career switchers, bootcamp grads, and anyone whose best project has an
+AI agent's fingerprints on it.
+
 ## Install
 
 One line, any agent (Claude Code, Cursor, Codex CLI, Copilot, DeepSeek, OpenCode, …):

@@ -5,6 +5,14 @@ All notable changes are documented here. Format loosely follows
 `skills/interview-my-project/SKILL.md` (`metadata.version`) and
 `.claude-plugin/plugin.json`; they move together.
 
+## [0.2.3] — 2026-09-04
+
+### Added
+- Discoverability: `llms.txt` for AI crawlers and assistants; "Who this is for"
+  sections in both READMEs phrased as the questions people actually ask; widened
+  skill trigger description (interview prep, walk-me-through-your-project,
+  portfolio defense, role-specific rounds); richer GitHub topics and description.
+
 ## [0.2.2] — 2026-09-04
 
 ### Added
