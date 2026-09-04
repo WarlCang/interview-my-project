@@ -4,20 +4,18 @@
 
 > **Vibe coding got you the project. `interview-my-project` makes it yours.**
 
+<p align="center">
+  <img src="docs/assets/hero.jpg" alt="A developer at a glowing terminal faces a looming holographic interviewer formed from code" width="860">
+</p>
+
 An AI interviewer for **your** repo. It reads your codebase *and* your Claude Code
 session logs, asks the questions a real staff engineer would ask about *this specific
 project*, and drills you until you can defend every decision cold — before a real
 interviewer does it for you.
 
-```
-🎙️  What did you try that didn't work?
-
-    > honestly it mostly worked on the first try
-
-🔴  Your session logs show you fought false refusals for two days and
-    hand-patched the retrieval score gate to fix them. An interviewer
-    will smell this gap. Let's talk about what actually happened.
-```
+<p align="center">
+  <img src="docs/assets/demo-interview.png" alt="A mock interview: the skeptical interviewer catches an undefendable eval claim, scores it 🔴, and coaches the answer the candidate should have given" width="860">
+</p>
 
 ## Why
 
@@ -122,6 +120,11 @@ you get the repo-only interview.
    and trend across sessions, and every session ends with a **readiness card**: a
    screenshot-ready 1200×630 summary of how you did. Sharing a brutal score is half
    the fun; watching it climb is the other half.
+
+<p align="center">
+  <img src="docs/assets/demo-readiness-card.jpg" alt="Readiness card from a Chinese-language session: 54% ready, 3 solid / 3 shaky / 2 couldn't defend, with the interviewer's one-line verdict" width="640"><br>
+  <em>A real readiness card — from a 中文 session, because the interviewer speaks your language.</em>
+</p>
 
 ## What the interview feels like
 
