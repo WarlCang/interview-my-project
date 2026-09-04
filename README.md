@@ -122,8 +122,8 @@ you get the repo-only interview.
    the fun; watching it climb is the other half.
 
 <p align="center">
-  <img src="docs/assets/demo-readiness-card.jpg" alt="Readiness card from a Chinese-language session: 54% ready, 3 solid / 3 shaky / 2 couldn't defend, with the interviewer's one-line verdict" width="640"><br>
-  <em>A real readiness card — from a 中文 session, because the interviewer speaks your language.</em>
+  <img src="docs/assets/demo-readiness-card-en.jpg" alt="Readiness card: 54% interview-ready, 3 solid / 3 shaky / 2 couldn't defend, with the interviewer's one-line verdict" width="640"><br>
+  <em>A real readiness card. Brutal scores are shareable by design — and yes, it speaks 中文 too.</em>
 </p>
 
 ## What the interview feels like
