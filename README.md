@@ -32,7 +32,7 @@ This tool asks about exactly those.
 
 ## Install
 
-Inside Claude Code:
+### Claude Code (full experience)
 
 ```
 /plugin marketplace add WarlCang/interview-my-project
@@ -47,6 +47,24 @@ Then, in any repo you want to be interviewed about:
 
 Modes: `/interview-me quick` (5 questions) · `/interview-me deep` (12 + a full data-flow
 trace) · `/interview-me focus auth` (drill one subsystem).
+
+### Any other agent (Cursor, Codex, Copilot, OpenCode, Amp, Goose, …)
+
+The interview is a self-contained, [Agent Skills](https://agentskills.io)-format skill —
+one markdown file, no Claude-specific machinery. Two ways to use it:
+
+1. **If your agent supports skills:** copy `skills/interview-my-project/` into your
+   agent's skills directory (e.g. `.cursor/skills/`, `~/.config/opencode/skills/` —
+   wherever your tool loads skills from), then ask: *"interview me about this project."*
+2. **If it doesn't:** just point your agent at the file:
+
+   ```
+   Read skills/interview-my-project/SKILL.md and follow it. Interview me about this repo.
+   ```
+
+You'll get the same interview. The transcript-derived questions work best with Claude
+Code session logs (Codex CLI logs are supported best-effort); without logs you get the
+repo-only interview.
 
 ## How it works
 

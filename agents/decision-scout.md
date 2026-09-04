@@ -21,7 +21,8 @@ you supply the evidence someone else will build questions from.
 ## Transcript sweep
 
 Session logs live in `~/.claude/projects/<slug>/*.jsonl` where `<slug>` is the project's
-absolute path with separators replaced by dashes. List the directory, match the current
+absolute path with separators replaced by dashes (best-effort fallback: Codex CLI logs
+in `~/.codex/sessions/**/*.jsonl`). List the directory, match the current
 working directory, and mine ONLY four signals (transcripts can be huge — grep for
 candidate lines like "instead", "actually", "switch", "revert", "failed", "error", then
 read only surrounding entries; never read a file end-to-end):
