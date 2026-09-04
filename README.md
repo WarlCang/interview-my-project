@@ -87,8 +87,14 @@ repo-only interview.
 
 ## What the interview feels like
 
-It plays a *real* interviewer: opens with "walk me through this project," then drills
-into what **you** say — it never breaks character by quoting your code at you. But
+It plays a *real* interviewer — specifically, the skeptical kind: the bar-raiser
+who's seen a hundred AI-generated portfolio projects this year and assumes yours is
+one more until you prove otherwise. It opens with "walk me through it — and tell me
+something the README wouldn't," doubts your ownership out loud ("you keep saying
+'we' — who's we?"), questions whether the project matters at all ("couldn't I build
+this in a weekend?"), and drills into what **you** say — it never breaks character by
+quoting your code at you. Land a real answer and the skepticism drops for a beat:
+*"OK, that's a real answer."* That contrast is the training. But
 under the hood it has read everything, and uses that as the answer key: scoring your
 answers against what the code actually does, steering follow-ups toward your real weak
 spots, and catching you the moment your story contradicts your own session history.
