@@ -1,7 +1,7 @@
 {
   "name": "interview-my-project",
   "description": "An AI interviewer for YOUR project. Reads your repo and your Claude Code session logs, then grills you on every decision until you can defend it cold — before a real interviewer does it for you.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "Carl Wang",
     "url": "https://github.com/WarlCang"

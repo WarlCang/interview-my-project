@@ -3,7 +3,7 @@ name: interview-my-project
 description: Run a mock technical interview about the current repository, in any language the user prefers. Use when the user asks to be interviewed, grilled, quizzed, or drilled about their project/repo/codebase (in English, 中文, or any other language), wants interview prep for a portfolio project, or asks "can I defend this code". Reads the repo and (when available) local agent session logs, asks staff-engineer-quality questions one at a time, scores answers honestly, and tracks readiness across sessions.
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
   author: WarlCang
 ---
 
@@ -58,10 +58,15 @@ else is progressive enhancement with a mandatory fallback:
 Never tell the user a feature is missing because of which agent they run; degrade
 silently and deliver the best interview the environment allows.
 
-**Modes** (from the user's request; default is 8 questions): `quick` = 5 questions;
-`deep` = 12 plus one full data-flow trace; `focus <topic>` = all questions on that
-topic or subsystem; `role <position>` = calibrate the entire interview to that target
-role (see Calibration).
+## Modes
+
+From the user's request. Default is 8 questions — scaled down without comment when
+the project can't support that many questions that clear the bar:
+
+- `quick` — 5 questions · `deep` — 12 plus one full data-flow trace
+- `focus <topic>` — all questions on that topic or subsystem
+- `role <position>` — calibrate the interview to that target role (see Calibration)
+- `lang <code>` — run the interview in that language (see Language)
 
 ## Calibrate to the project and the role
 
@@ -163,7 +168,10 @@ rules, every phase:
 ## Phase 1 — Ingest (silent, fast)
 
 1. Check for `.interview/scorecard.json` in the repo root. If it exists, this is a
-   returning candidate: load their re-queued weak questions and note the readiness trend.
+   returning candidate: load their re-queued weak questions, note the readiness
+   trend, and check what changed since the last session (`git log --since` that
+   date). New work gets fresh probes alongside the re-queue — "last time you
+   couldn't defend X; I see you've added Y since."
 2. Scan the repo on a reading budget: list the tree, then read at most ~15 files —
    manifests and entry points in full, everything else headers-and-skim first. Skip
    vendored code, lockfiles, generated files. Full-read a file only once a probe
@@ -186,13 +194,19 @@ error-fix cycles, decisions the user made or rubber-stamped. Discovery, in order
      absolute path with separators replaced by dashes (e.g. `-Users-jane-code-myapp`).
      Each line is JSON; signal is in `message.content` of `user`/`assistant` entries.
    - Codex CLI: `~/.codex/sessions/**/*.jsonl`.
-2. **The repo's own record** — agent-written progress logs, ADRs, `docs/` session
+2. **Git history — present in nearly every repo, on every agent.** A bounded
+   `git log --stat` (last ~200 commits) is a pivot record in itself: reverts,
+   "fix"-burst sequences on the same file, a dependency swapped mid-project, a
+   subsystem deleted wholesale, suspicious timing. Feed it into the same four
+   signals — this is the universal fallback that keeps categories 7–8 alive when no
+   transcripts exist.
+3. **The repo's own record** — agent-written progress logs, ADRs, `docs/` session
    notes, `.specstory/`: often richer than raw transcripts and present regardless of
    agent. Mine these with the same four signals.
-3. **Ask once** — other agents (Cursor, Copilot, DeepSeek, …) store history in
+4. **Ask once** — other agents (Cursor, Copilot, DeepSeek, …) store history in
    formats that vary and change; never guess or invent paths. One question — "where
    does your agent keep session history for this project?" — then move on.
-4. **Nothing found** — run the repo-only interview. It is still the full product.
+5. **Nothing found** — run the repo-only interview. It is still the full product.
 
 Extract ONLY these four signals — do not attempt full-transcript understanding:
 
@@ -212,9 +226,10 @@ Transcripts can be tens of MB; never read one end-to-end.
 
 ## Phase 2 — Interrogate (build the bank)
 
-### Probe taxonomy (the engineering default — re-weight or swap categories per the
-Calibration section; the session-history and value-skepticism categories apply to
-every role)
+### Probe taxonomy
+
+The engineering default below — re-weight or swap categories per the Calibration
+section. The session-history and value-skepticism categories apply to every role.
 
 1. **Load-bearing decisions** — "How does auth work across your routes? …What happens
    if a new route forgets it?"
@@ -250,8 +265,10 @@ Score each candidate question on three axes (1–5 each), rank by sum:
 - **Non-obviousness** — is the answer invisible from surface reading? Transcript-derived
   questions max this axis.
 
-Discard anything scoring under 9. A short bank of brutal questions beats a long bank of
-filler. Re-queued questions from previous sessions always lead.
+Discard anything scoring under 9. A short bank of brutal questions beats a long bank
+of filler — if the project only supports five questions that clear the bar, ask
+five; never pad to hit the mode's count. Re-queued questions from previous sessions
+always lead.
 
 ### Anti-patterns (instant kill list)
 
@@ -290,11 +307,23 @@ hidden answer key. Write it to `.interview/questions.json`:
       "push": "...",
       "floor": "...",
       "rank_score": 13,
-      "status": "queued"
+      "status": "queued",
+      "times_asked": 0,
+      "best_score": null
     }
   ]
 }
 ```
+
+`status` lifecycle: `queued` → `asked` (once its verdict lands) → `requeued` (🟡/🔴
+at debrief). After every verdict, update the entry: bump `times_asked` and set
+`best_score` to the better of its current value and this verdict
+(`"solid"`/`"shaky"`/`"failed"`). This per-question record is what makes readiness
+computable across sessions — without it the scorecard is a guess.
+
+The first time `.interview/` is created, offer once to add it to the repo's
+`.gitignore` — scores and answer keys are personal, and some candidates won't want
+them in version control. Respect either choice silently from then on.
 
 ---
 
@@ -309,9 +338,14 @@ never becomes reachable conversationally, ask it as a domain-standard question. 
 and probe contradictions between their narrative and the answer key immediately —
 that's the highest-signal moment an interview produces.
 
+Before the first question, one housekeeping line — the candidate can say `stop`,
+`skip`, or `score` at any time — then never mention it again.
+
 **The cardinal rule: ask ONE question, then STOP and wait for the candidate's answer.**
 Never answer for them, never ask two at once, never reveal the follow-up ladder in
-advance. This is a conversation, not a worksheet.
+advance. This is a conversation, not a worksheet. You may cut off a rambling answer
+once its point is made — real interviewers do, and time discipline is part of the
+training.
 
 For each answer: run the ladder, then deliver the verdict and a coaching card.
 
@@ -349,7 +383,17 @@ move on.
 Never inflate scores to be nice. A candidate who walks into a real interview
 overconfident because you were polite is the failure mode of this entire product.
 
-The candidate can say `stop`, `skip`, or `score` at any time. Honor it immediately.
+**When the candidate pushes back, check — don't defend.** If they dispute your claim
+about their own code, verify against the file on the spot. If they're right, concede
+plainly ("You're right — I misread it") and score the exchange 🟢 with a note:
+defending your system against a wrong interviewer, under pressure, is the strongest
+signal an interview can produce. Never protect a wrong claim to save face — that is
+an evidence-integrity violation.
+
+Honor `stop`, `skip`, and `score` immediately. `stop` still gets the full close-out:
+Phases 4–5 run on whatever was asked, the scorecard marks the session partial, and
+the readiness card still generates. A three-question session that vanishes teaches
+nothing.
 
 ---
 
@@ -360,8 +404,10 @@ Coaching happened inline via the cards; the debrief aggregates it:
 - Mark every 🟡/🔴 question `"status": "requeued"` in `questions.json` — they lead
   next session.
 - Compile every **Fix** item into `.interview/prep.md`: a prioritized punch list of
-  repo work that upgrades weak answers. Each item: the fix, an effort estimate, and
-  the interview answer it unlocks ("after this, you can say: …").
+  repo work that upgrades weak answers. Format per item: a `## <n>. <fix title>
+  (~effort)` heading, two or three lines on the change (with the `file:line` it
+  touches), and one line starting "After this, you can say:" with the upgraded
+  interview answer. Highest-leverage first.
 - Offer to implement the top item together right now — the agent running this skill
   is usually also the agent that can make the change. Interview prep that improves
   the repo is the whole point.
@@ -380,6 +426,7 @@ Update `.interview/scorecard.json`:
       "date": "<ISO date>",
       "mode": "default",
       "asked": 8,
+      "completed": true,
       "solid": 4,
       "shaky": 3,
       "failed": 1,
@@ -391,8 +438,9 @@ Update `.interview/scorecard.json`:
 }
 ```
 
-`readiness` = percentage of the current question bank the candidate has answered 🟢 at
-least once, weighted by rank_score. Close with a scorecard summary: readiness score,
+`readiness` = the rank_score-weighted percentage of the current bank whose
+`best_score` is `"solid"` — computed from the per-question records in
+`questions.json`, never estimated. Close with a scorecard summary: readiness score,
 trend arrow, the single weakest area, and one line of honest coaching — the kind an
 interviewer would give a colleague, not a customer.
 

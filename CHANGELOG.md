@@ -5,6 +5,29 @@ All notable changes are documented here. Format loosely follows
 `skills/interview-my-project/SKILL.md` (`metadata.version`) and
 `.claude-plugin/plugin.json`; they move together.
 
+## [0.2.1] — 2026-09-04
+
+### Added
+- Per-question result tracking in `questions.json` (`status` lifecycle,
+  `times_asked`, `best_score`) — readiness is now computed from records, not
+  estimated.
+- Git history as a universal session-history source: bounded `git log --stat`
+  mining keeps history-derived questions alive on any agent, with or without
+  transcripts.
+- Candidate pushback rule: disputed claims are verified on the spot, wrong claims
+  conceded plainly, and a successful defense scores 🟢 — never protect a wrong claim.
+- Early-exit close-out: `stop` still runs the debrief, scorecard (marked partial),
+  and readiness card.
+- Returning candidates get fresh probes on work added since the last session.
+- Interview controls (`stop`/`skip`/`score`) disclosed once at the open; rambling
+  answers may be cut off like a real interviewer would.
+- One-time offer to gitignore `.interview/`; `prep.md` format spec; question count
+  scales to what the project supports instead of padding.
+
+### Fixed
+- Taxonomy heading rendered as body text; modes list relocated to its own section
+  and now includes `lang <code>`.
+
 ## [0.2.0] — 2026-09-04
 
 ### Added
