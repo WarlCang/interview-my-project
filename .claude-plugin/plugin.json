@@ -1,0 +1,20 @@
+{
+  "name": "interview-my-project",
+  "description": "An AI interviewer for YOUR project. Reads your repo and your Claude Code session logs, then grills you on every decision until you can defend it cold — before a real interviewer does it for you.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Carl Wang",
+    "url": "https://github.com/WarlCang"
+  },
+  "homepage": "https://github.com/WarlCang/interview-my-project",
+  "repository": "https://github.com/WarlCang/interview-my-project",
+  "license": "MIT",
+  "keywords": [
+    "interview",
+    "mock-interview",
+    "interview-prep",
+    "vibe-coding",
+    "claude-code",
+    "code-comprehension"
+  ]
+}

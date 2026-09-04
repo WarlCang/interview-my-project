@@ -1,0 +1,14 @@
+{
+  "name": "interview-my-project",
+  "owner": {
+    "name": "Carl Wang",
+    "url": "https://github.com/WarlCang"
+  },
+  "plugins": [
+    {
+      "name": "interview-my-project",
+      "source": "./",
+      "description": "An AI interviewer for YOUR project. Reads your repo and your Claude Code session logs, then grills you on every decision until you can defend it cold."
+    }
+  ]
+}
