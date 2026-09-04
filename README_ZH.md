@@ -56,7 +56,9 @@ npx skills add WarlCang/interview-my-project -g
 ```
 
 模式:`/interview-me quick`(5 题)· `/interview-me deep`(12 题 + 一次完整数据流
-追问)· `/interview-me focus auth`(只钻一个子系统)。
+追问)· `/interview-me focus auth`(只钻一个子系统)· `/interview-me role pm`
+(按目标岗位校准——同一个仓库,面 PM、设计、数据还是工程岗,是完全不同的一场
+面试,提问的也换成*那个*行当里最难缠的资深面试官)。
 
 支持任意语言——英文、中文或其他(`/interview-me lang zh`,或者直接用中文回答,
 面试官会跟上)。人设和标准不变:那股怀疑劲儿是按语言原生重写的,不是翻译腔。

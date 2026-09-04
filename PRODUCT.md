@@ -37,6 +37,11 @@ that follows each answer is 100% constructive.
    Runs on the user's own agent subscription. Zero infrastructure, forever.
 6. **Any language, same bar.** The persona is re-created natively per language, never
    translated; the taxonomy, ranking, and rubric are language-invariant.
+7. **The room decides the questions.** Not every project is technical, and not every
+   interview is an engineering interview. Probes come from what the project actually
+   contains and the role the candidate is targeting — the same repo gets a different
+   interview for a PM, design, data, or engineering room, run by the skeptical
+   senior of that discipline. Never a fixed template.
 
 ## Anti-references (what we refuse to become)
 

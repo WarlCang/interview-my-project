@@ -62,7 +62,9 @@ Then, in any repo you want to be interviewed about:
 ```
 
 Modes: `/interview-me quick` (5 questions) · `/interview-me deep` (12 + a full data-flow
-trace) · `/interview-me focus auth` (drill one subsystem).
+trace) · `/interview-me focus auth` (drill one subsystem) · `/interview-me role pm`
+(calibrate to the room — the same repo gets a different interview for a PM, design,
+data, or engineering role, asked by the skeptical senior of *that* discipline).
 
 Works in your language — English, 中文, or anything else (`/interview-me lang zh`, or
 just answer in it and the interviewer follows). Same persona, same standards: the
