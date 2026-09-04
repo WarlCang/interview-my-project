@@ -77,9 +77,11 @@ repo-only interview.
    the questions only your transcripts can produce ("why did you abandon approach X?").
 3. **Drill** — a real interview in your terminal. One question at a time, follow-up
    pushes when you hand-wave, honest scoring: 🟢 solid / 🟡 shaky / 🔴 couldn't defend.
-4. **Close the gap** — every weak answer gets a focused explainer built from your actual
-   code and transcript, shaped like the answer you *should* have given. Then it's
-   re-queued for next session.
+4. **Coach** — every answer gets a debrief grounded in your actual code: the verdict
+   with `file:line` evidence, the model answer you *should* have given (**Say**), the
+   thing that hurt you (**Avoid**), and — when the honest answer is weak because the
+   project is weak — the concrete repo fix that upgrades it (**Fix**), compiled into a
+   prep punch list it can implement with you. Weak questions re-queue for next session.
 5. **Track** — a scorecard (`.interview/scorecard.json`) persists your readiness score
    and trend across sessions. Watch it climb until you're ready.
 

@@ -181,8 +181,28 @@ that's the highest-signal moment an interview produces.
 Never answer for them, never ask two at once, never reveal the follow-up ladder in
 advance. This is a conversation, not a worksheet.
 
-For each answer, score it and say the score plainly with one sentence of
-interviewer-style reasoning:
+For each answer: run the ladder, then deliver the verdict and a coaching card.
+
+1. **Ladder** — if the answer is shaky, use the **push** before scoring is final; if
+   they hand-wave, use the **floor**. One ladder max per question — then move on.
+2. **Verdict** — 🟢/🟡/🔴 per the rubric below, **justified against the answer key**.
+   This is where `file:line` citations and log quotes come out: "You said the gate is
+   pure cosine similarity — `store.py:125` lifts BM25 hits past it" is the standard;
+   generic feedback ("good answer, could be more specific") is banned.
+3. **Coaching card** — the actual product. Under ~10 lines, then next question:
+   - **Say** — the model answer, interview-shaped: decision → why → tradeoff → limit,
+     3–6 sentences the candidate could deliver verbatim next time. Built from the
+     actual code and logs, never from generic best practice.
+   - **Avoid** — the specific thing in their answer that hurt them (overclaiming,
+     glossing over a struggle the logs record, contradicting their own code), or the
+     trap this question sets for everyone.
+   - **Fix** *(only when warranted)* — when the honest answer is weak because the
+     PROJECT is weak, say so and prescribe the work: "right now the true answer is
+     'nothing handles stale chunks' — a 30-minute delete-before-upsert fix upgrades
+     this answer from a confession into a war story." Include effort estimate and the
+     answer it unlocks.
+
+Rubric:
 
 - **🟢 Solid** — correct, gives the *why*, names at least one tradeoff or limit
   unprompted. The "strong hire signal" answer.
@@ -191,10 +211,8 @@ interviewer-style reasoning:
 - **🔴 Couldn't defend** — wrong, contradicted the code, or admitted not knowing. Not a
   moral failure — it's the exact gap this tool exists to close. Say so plainly.
 
-If 🟡, use the **push** before scoring is final; if they hand-wave, use the **floor**.
-One ladder max per question — then move on, like a real interview. If the candidate says
-"I don't know", respect it: score 🔴, one sentence on what the answer touches, move on.
-No lectures mid-interview.
+If the candidate says "I don't know", respect it: score 🔴, give the coaching card,
+move on.
 
 Never inflate scores to be nice. A candidate who walks into a real interview
 overconfident because you were polite is the failure mode of this entire product.
@@ -203,16 +221,18 @@ The candidate can say `stop`, `skip`, or `score` at any time. Honor it immediate
 
 ---
 
-## Phase 4 — Close the gap (after the last question)
+## Phase 4 — Debrief (after the last question)
 
-For every 🟡/🔴 answer, produce a focused explainer:
+Coaching happened inline via the cards; the debrief aggregates it:
 
-- Anchored: cite exact `file:line` and, when available, quote the transcript moment
-  where the decision happened.
-- Shaped as the answer the candidate *should have given* — 3–6 sentences: the decision,
-  the why, the tradeoff, the limit. Interview-answer shaped, not documentation-shaped.
-- End with the re-queue note: "This question returns next session." Mark those
-  questions `"status": "requeued"` in `questions.json`.
+- Mark every 🟡/🔴 question `"status": "requeued"` in `questions.json` — they lead
+  next session.
+- Compile every **Fix** item into `.interview/prep.md`: a prioritized punch list of
+  repo work that upgrades weak answers. Each item: the fix, an effort estimate, and
+  the interview answer it unlocks ("after this, you can say: …").
+- Offer to implement the top item together right now — the agent running this skill
+  is usually also the agent that can make the change. Interview prep that improves
+  the repo is the whole point.
 
 ---
 
