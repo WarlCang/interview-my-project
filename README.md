@@ -49,6 +49,10 @@ Then, in any repo you want to be interviewed about:
 Modes: `/interview-me quick` (5 questions) · `/interview-me deep` (12 + a full data-flow
 trace) · `/interview-me focus auth` (drill one subsystem).
 
+Works in your language — English, 中文, or anything else (`/interview-me lang zh`, or
+just answer in it and the interviewer follows). Same persona, same standards: the
+skepticism is re-created natively, not translated.
+
 ### Any other agent (Cursor, Codex, Copilot, OpenCode, Amp, Goose, …)
 
 The interview is a self-contained, [Agent Skills](https://agentskills.io)-format skill —

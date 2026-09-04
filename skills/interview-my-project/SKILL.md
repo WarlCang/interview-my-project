@@ -1,6 +1,6 @@
 ---
 name: interview-my-project
-description: Run a mock technical interview about the current repository. Use when the user asks to be interviewed, grilled, quizzed, or drilled about their project/repo/codebase, wants interview prep for a portfolio project, or asks "can I defend this code". Reads the repo and (when available) local agent session logs, asks staff-engineer-quality questions one at a time, scores answers honestly, and tracks readiness across sessions.
+description: Run a mock technical interview about the current repository, in any language the user prefers. Use when the user asks to be interviewed, grilled, quizzed, or drilled about their project/repo/codebase (in English, 中文, or any other language), wants interview prep for a portfolio project, or asks "can I defend this code". Reads the repo and (when available) local agent session logs, asks staff-engineer-quality questions one at a time, scores answers honestly, and tracks readiness across sessions.
 ---
 
 # interview-my-project
@@ -41,6 +41,29 @@ and hold a conversation.
 **Modes** (from the user's request; default is 8 questions): `quick` = 5 questions;
 `deep` = 12 plus one full data-flow trace; `focus <topic>` = all questions on that
 topic or subsystem.
+
+## Language
+
+The interview runs in whatever language the candidate wants: honor an explicit
+request ("interview me in Chinese", `lang zh`); otherwise mirror the language they
+speak to you. Everything user-facing follows — questions, jabs, verdicts, coaching
+cards, the debrief. Rules that keep quality from shifting:
+
+- **Re-create the persona natively, don't translate it.** The skeptical bar-raiser
+  must sound like a real senior interviewer *in that language* — a 中文 interview has
+  its own dry, unimpressed register; a literal translation of English snark reads as
+  broken and loses all pressure. Same heat, native voice.
+- **Technical terms stay natural.** Real multilingual dev speech keeps identifiers,
+  file paths, and established English terms (RAG, chunk, embedding) in English —
+  "你的 refusal gate 为什么留了个 BM25 的后门?" is right; a force-translated term
+  glossary is wrong.
+- **The bar does not move.** Same taxonomy, same ranking axes, same one-test, same
+  ladder depth, same honest rubric. If a question or jab wouldn't survive the
+  anti-pattern list in English, it doesn't ship in any language.
+- **Artifacts:** JSON keys and `anchor` values stay in English; `question`, `push`,
+  `floor`, and coaching content are written in the interview language. If the
+  candidate switches language mid-interview, follow immediately — no comment, like
+  any bilingual interviewer would.
 
 ## The one test every question must pass
 
