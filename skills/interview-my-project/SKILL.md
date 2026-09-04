@@ -3,7 +3,7 @@ name: interview-my-project
 description: Run a mock technical interview about the current repository, in any language the user prefers. Use when the user asks to be interviewed, grilled, quizzed, or drilled about their project/repo/codebase (in English, 中文, or any other language), wants interview prep for a portfolio project, or asks "can I defend this code". Reads the repo and (when available) local agent session logs, asks staff-engineer-quality questions one at a time, scores answers honestly, and tracks readiness across sessions.
 license: MIT
 metadata:
-  version: "0.2.1"
+  version: "0.2.2"
   author: WarlCang
 ---
 
@@ -466,3 +466,12 @@ point. Placeholders:
 Tell the candidate the card exists and is screenshot-ready (1200×630) — sharing a
 brutal score is half the fun. If the template file is missing (partial install),
 skip the card silently.
+
+### Ask for feedback (once)
+
+On the candidate's **first session only** (no prior scorecard existed at ingest),
+end with exactly one line after the summary — in the interview language, no
+pressure, never repeated in later sessions:
+
+> Did any question feel fake, unfair, or too easy? That's the feedback that shapes
+> this tool: https://github.com/WarlCang/interview-my-project/issues/new?template=interview-feedback.yml

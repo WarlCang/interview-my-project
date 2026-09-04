@@ -133,6 +133,14 @@ agent 都一样。
 完整细节——包括**不做清单**(我们拒绝构建什么、为什么)——见
 [ROADMAP.md](ROADMAP.md)。产品原则见 [PRODUCT.md](PRODUCT.md)。
 
+## 贡献与反馈
+
+我们最想要的反馈只有一个:**这场面试像真人,还是像出题机器?** 哪个问题很假、
+哪次评分不公、哪条引用是编的——请用
+[面试质量反馈表](https://github.com/WarlCang/interview-my-project/issues/new?template=interview-feedback.yml)
+告诉我们,这是塑造这个工具的核心渠道。被拷问完想晒战绩卡?也有专门的 showcase
+表单。其他一切见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
 ## 许可证
 
 MIT

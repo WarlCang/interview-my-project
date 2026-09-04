@@ -1,0 +1,70 @@
+name: Report a bug
+description: Wrong interview behavior, a broken artifact, or a bad degradation on your agent.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A redacted transcript excerpt is the fastest path to a fix. Never paste secrets, private code you can't share, or unredacted session-log content.
+
+  - type: input
+    id: version
+    attributes:
+      label: Skill version
+      description: "`metadata.version` in skills/interview-my-project/SKILL.md (or plugin version)."
+      placeholder: "0.2.1"
+    validations:
+      required: true
+
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and model
+      placeholder: "Claude Code 2.1.x / Cursor / Codex CLI …, and the model it ran"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: Install method
+      options:
+        - npx skills add
+        - Claude Code plugin marketplace
+        - Manual copy / point-at-SKILL.md
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: project-type
+    attributes:
+      label: What kind of project was being interviewed?
+      placeholder: "e.g. FastAPI backend, React portfolio site, data analysis notebook"
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened vs. what you expected
+      description: Include the mode used (quick/deep/focus/role/lang) if relevant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: excerpt
+    attributes:
+      label: Redacted transcript excerpt
+      description: The smallest excerpt that shows the problem (question + answer + verdict, or the broken artifact snippet).
+      render: text
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirmation
+      options:
+        - label: I redacted secrets, private code, and personal data from everything above.
+          required: true

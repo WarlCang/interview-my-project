@@ -5,6 +5,21 @@ All notable changes are documented here. Format loosely follows
 `skills/interview-my-project/SKILL.md` (`metadata.version`) and
 `.claude-plugin/plugin.json`; they move together.
 
+## [0.2.2] — 2026-09-04
+
+### Added
+- Feedback loop: the debrief's first-session close invites interview-quality
+  feedback once; a dedicated issue form captures the verdict that matters
+  ("real interviewer or quiz generator?"), what was off, and what a real
+  interviewer would have asked instead.
+- Contribution surface: CONTRIBUTING.md with product contracts, PR template
+  with a contract checklist, bug-report and showcase issue forms, private
+  security-report contact link.
+- CI pipeline: `scripts/check.mjs` (version sync across SKILL.md / plugin.json /
+  CHANGELOG, frontmatter limits, card-template placeholder parity, EN/ZH README
+  parity, relative-link integrity) on Node 18 + 22; advisory skills-CLI
+  discovery check; Conventional Commits PR-title gate.
+
 ## [0.2.1] — 2026-09-04
 
 ### Added

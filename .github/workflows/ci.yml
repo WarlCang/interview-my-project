@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    name: Repo invariants (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 22]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Version sync, frontmatter, placeholders, README parity, links
+        run: node scripts/check.mjs
+
+  skill-discovery:
+    name: skills CLI discovers the skill
+    runs-on: ubuntu-latest
+    continue-on-error: true # network-dependent; advisory, never blocks
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: npx skills add . -l finds interview-my-project
+        run: |
+          npx -y skills add . -l 2>&1 | tee discovery.log
+          grep -q "interview-my-project" discovery.log
+
+  pr-title:
+    name: Conventional Commits PR title
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "$TITLE" | grep -qE '^(feat|fix|docs|chore|refactor|test|ci)(\([a-z0-9-]+\))?!?: .+' \
+            || { echo "PR title must follow Conventional Commits, e.g. 'feat(interview): ...'"; exit 1; }

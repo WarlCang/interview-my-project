@@ -1,0 +1,69 @@
+name: Interview quality feedback
+description: The channel that matters most — tell us where the interview felt real, fake, unfair, or useless.
+title: "[Feedback]: "
+labels:
+  - feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This project lives or dies on one bar: **does it feel like a real senior interviewer, or a quiz generator?** Honest negative feedback is the most valuable thing you can give us. Redact anything private.
+
+  - type: dropdown
+    id: verdict
+    attributes:
+      label: Overall — did it feel like a real interviewer?
+      options:
+        - Yes — uncomfortably real
+        - Mostly, with some fake-feeling moments
+        - Mixed
+        - Mostly quiz generator
+        - "No — generic AI quiz"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: what-was-off
+    attributes:
+      label: What needs work? (pick all that apply)
+      options:
+        - label: Question quality — trivia, generic, or answerable in 10 seconds
+        - label: Follow-ups — didn't push, or pushed on the wrong thing
+        - label: Persona/tone — too soft, too harsh, or fake-sounding snark
+        - label: Scoring — unfair, inflated, or inconsistent verdicts
+        - label: Coaching cards — not grounded in my code, or not useful
+        - label: Evidence — cited something wrong / hallucinated about my code
+        - label: Calibration — questions didn't fit my project type or target role
+        - label: Language — non-English interview felt translated, not native
+        - label: Session flow — state, re-queue, scorecard, or readiness card issues
+        - label: Nothing — this is praise
+
+  - type: textarea
+    id: worst-moment
+    attributes:
+      label: The moment that felt most wrong (or most right)
+      description: Paste the redacted exchange — the question, your answer, its verdict. Specifics are what make this fixable.
+    validations:
+      required: true
+
+  - type: textarea
+    id: real-interviewer
+    attributes:
+      label: What would a real interviewer have asked or said instead?
+      description: Optional, but this is the single most useful field in this form.
+
+  - type: input
+    id: context
+    attributes:
+      label: Setup
+      placeholder: "agent + model, project type, mode (quick/deep/focus/role/lang), skill version"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Confirmation
+      options:
+        - label: I redacted secrets, private code, and personal data.
+          required: true

@@ -1,0 +1,58 @@
+name: Showcase your interview
+description: Got grilled? Share your readiness card or your most brutal transcript moment.
+title: "[Showcase]: "
+labels:
+  - showcase
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The best submissions become gallery and README material, with attribution. Redact anything you wouldn't put on a slide.
+
+  - type: input
+    id: project-type
+    attributes:
+      label: What kind of project got interviewed?
+      placeholder: "e.g. local-first RAG chatbot, indie game, portfolio site"
+    validations:
+      required: true
+
+  - type: input
+    id: setup
+    attributes:
+      label: Agent, mode, and language
+      placeholder: "e.g. Claude Code, `role pm`, 中文"
+    validations:
+      required: true
+
+  - type: input
+    id: score
+    attributes:
+      label: Readiness score (and trend, if returning)
+      placeholder: "e.g. 54% first session · 71% ▲ +17 second session"
+
+  - type: textarea
+    id: highlight
+    attributes:
+      label: The moment worth sharing
+      description: Attach your readiness card screenshot and/or paste the (redacted) exchange — the question that got you, the verdict, the comeback.
+    validations:
+      required: true
+
+  - type: textarea
+    id: caught
+    attributes:
+      label: What did it catch that you didn't expect?
+      description: Optional — this is the most convincing line for other users.
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Consent
+      options:
+        - label: I redacted secrets, private code, and personal data.
+          required: true
+        - label: I have the rights to share this content.
+          required: true
+        - label: The maintainers may feature this (with attribution) in the README or a gallery.
+          required: true

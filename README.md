@@ -151,6 +151,14 @@ get most of them back, on any agent.
 Full detail — including the **Not planned** table (what we refuse to build, and
 why) — in [ROADMAP.md](ROADMAP.md). Product principles in [PRODUCT.md](PRODUCT.md).
 
+## Contributing & feedback
+
+The feedback that matters most: **did the interview feel real, or like a quiz
+generator?** If a question felt fake, a score unfair, or a citation wrong, use the
+[interview quality feedback form](https://github.com/WarlCang/interview-my-project/issues/new?template=interview-feedback.yml) —
+that's what shapes this tool. Got grilled and want to show off your readiness card?
+There's a showcase form too. Everything else: [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## License
 
 MIT
