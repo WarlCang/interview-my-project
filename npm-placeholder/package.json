@@ -1,0 +1,26 @@
+{
+  "name": "interview-my-project",
+  "version": "0.0.1",
+  "description": "An AI interviewer for YOUR project — reads your repo and agent session logs, then grills you until you can defend every decision. CLI coming in v2; today, install the agent skill: npx skills add WarlCang/interview-my-project",
+  "bin": { "interview-my-project": "./cli.js" },
+  "files": ["cli.js", "README.md"],
+  "keywords": [
+    "interview",
+    "mock-interview",
+    "interview-prep",
+    "technical-interview",
+    "vibe-coding",
+    "claude-code",
+    "cursor",
+    "codex",
+    "agent-skills",
+    "ai-interviewer"
+  ],
+  "author": "Carl Wang (https://github.com/WarlCang)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarlCang/interview-my-project.git"
+  },
+  "homepage": "https://github.com/WarlCang/interview-my-project#readme"
+}
