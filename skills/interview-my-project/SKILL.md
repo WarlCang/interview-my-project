@@ -316,3 +316,26 @@ Update `.interview/scorecard.json`:
 least once, weighted by rank_score. Close with a scorecard summary: readiness score,
 trend arrow, the single weakest area, and one line of honest coaching — the kind an
 interviewer would give a colleague, not a customer.
+
+### The readiness card (shareable artifact)
+
+After the scorecard, generate `.interview/readiness-card.html`: copy this skill's
+`assets/card-template.html` and fill every `{{PLACEHOLDER}}` via exact string
+replacement — do not restyle, rewrite, or "improve" the template; its quality is the
+point. Placeholders:
+
+- `{{PROJECT}}` repo name · `{{DATE}}` ISO date · `{{READINESS}}` the score ·
+  `{{TREND}}` e.g. "▲ +9 vs last session" (or "first session")
+- `{{SOLID}}`/`{{SHAKY}}`/`{{FAILED}}` counts
+- `{{ACCENT}}` by readiness band: `#f85149` under 40, `#d29922` 40–69, `#3fb950` 70+
+- `{{VERDICT}}` — ONE line in the interviewer's voice, specific to this session,
+  honest and quotable: "Knows the architecture cold; folds the moment concurrency
+  comes up." Never generic praise.
+- Localized strings (interview language): `{{KICKER}}` ("Mock interview scorecard"),
+  `{{READINESS_LABEL}}` ("interview-ready"), `{{SOLID_LABEL}}`/`{{SHAKY_LABEL}}`/
+  `{{FAILED_LABEL}}` ("solid"/"shaky"/"couldn't defend"), `{{TAGLINE}}` ("Can you
+  defend your own repo?")
+
+Tell the candidate the card exists and is screenshot-ready (1200×630) — sharing a
+brutal score is half the fun. If the template file is missing (partial install),
+skip the card silently.

@@ -1,5 +1,7 @@
 # interview-my-project
 
+**English** | [中文](README_ZH.md)
+
 > **Vibe coding got you the project. `interview-my-project` makes it yours.**
 
 An AI interviewer for **your** repo. It reads your codebase *and* your Claude Code
@@ -33,7 +35,20 @@ This tool asks about exactly those.
 
 ## Install
 
-### Claude Code (full experience)
+One line, any agent (Claude Code, Cursor, Codex CLI, OpenCode, …):
+
+```bash
+npx skills add WarlCang/interview-my-project -g
+```
+
+Then open your agent in the repo you want to be interviewed about and paste your
+first prompt:
+
+```
+Interview me about this project. Don't go easy on me.
+```
+
+### Claude Code plugin (adds /interview-me + the ingest subagent)
 
 ```
 /plugin marketplace add WarlCang/interview-my-project
@@ -53,19 +68,15 @@ Works in your language — English, 中文, or anything else (`/interview-me lan
 just answer in it and the interviewer follows). Same persona, same standards: the
 skepticism is re-created natively, not translated.
 
-### Any other agent (Cursor, Codex, Copilot, OpenCode, Amp, Goose, …)
+### No `skills` CLI? Manual install
 
-The interview is a self-contained, [Agent Skills](https://agentskills.io)-format skill —
-one markdown file, no Claude-specific machinery. Two ways to use it:
+The interview is a self-contained, [Agent Skills](https://agentskills.io)-format skill
+with no Claude-specific machinery: copy `skills/interview-my-project/` into your
+agent's skills directory, or just point any agent at the file:
 
-1. **If your agent supports skills:** copy `skills/interview-my-project/` into your
-   agent's skills directory (e.g. `.cursor/skills/`, `~/.config/opencode/skills/` —
-   wherever your tool loads skills from), then ask: *"interview me about this project."*
-2. **If it doesn't:** just point your agent at the file:
-
-   ```
-   Read skills/interview-my-project/SKILL.md and follow it. Interview me about this repo.
-   ```
+```
+Read skills/interview-my-project/SKILL.md and follow it. Interview me about this repo.
+```
 
 You'll get the same interview. The transcript-derived questions work best with Claude
 Code session logs (Codex CLI logs are supported best-effort); without logs you get the
@@ -87,7 +98,9 @@ repo-only interview.
    project is weak — the concrete repo fix that upgrades it (**Fix**), compiled into a
    prep punch list it can implement with you. Weak questions re-queue for next session.
 5. **Track** — a scorecard (`.interview/scorecard.json`) persists your readiness score
-   and trend across sessions. Watch it climb until you're ready.
+   and trend across sessions, and every session ends with a **readiness card**: a
+   screenshot-ready 1200×630 summary of how you did. Sharing a brutal score is half
+   the fun; watching it climb is the other half.
 
 ## What the interview feels like
 
@@ -125,10 +138,13 @@ interview, minus the transcript-derived questions.
 
 ## Roadmap
 
-- **v1 (now)** — Claude Code plugin: `/interview-me`, full loop, scorecard.
-- **v2** — `npx interview-my-project`: standalone CLI, richer log parsing, readiness
-  trends, polished interview UX.
+- **v1 (now)** — the skill: full interview loop, coaching cards, readiness card.
+- **v2** — `npx interview-my-project`: fail-closed CLI layer — real log parsing,
+  question ranking, and scorecard math as code.
 - **v3** — voice mode: mock interviews are naturally spoken.
+
+Full detail — including the **Not planned** table (what we refuse to build, and
+why) — in [ROADMAP.md](ROADMAP.md). Product principles in [PRODUCT.md](PRODUCT.md).
 
 ## License
 
