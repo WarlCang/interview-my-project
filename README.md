@@ -8,12 +8,13 @@ project*, and drills you until you can defend every decision cold — before a r
 interviewer does it for you.
 
 ```
-🎙️  I see you switched from polling to webhooks halfway through your
-    March 3rd session. What made you switch — and was it the right call?
+🎙️  What did you try that didn't work?
 
-    > uh...
+    > honestly it mostly worked on the first try
 
-🔴  Couldn't defend. This question returns next session.
+🔴  Your session logs show you fought false refusals for two days and
+    hand-patched the retrieval score gate to fix them. An interviewer
+    will smell this gap. Let's talk about what actually happened.
 ```
 
 ## Why
@@ -82,19 +83,22 @@ repo-only interview.
 5. **Track** — a scorecard (`.interview/scorecard.json`) persists your readiness score
    and trend across sessions. Watch it climb until you're ready.
 
-## What the questions feel like
+## What the interview feels like
 
-No trivia, no "what is REST." Every question is anchored to your code and passes one
-test: *you can't answer it by reading a single file for 10 seconds.*
+It plays a *real* interviewer: opens with "walk me through this project," then drills
+into what **you** say — it never breaks character by quoting your code at you. But
+under the hood it has read everything, and uses that as the answer key: scoring your
+answers against what the code actually does, steering follow-ups toward your real weak
+spots, and catching you the moment your story contradicts your own session history.
 
-- "Why is auth middleware applied per-route instead of globally? What breaks if a new
-  route forgets it?"
-- "You picked SQLite. At what point does that decision hurt you, and what's the
-  migration story?"
-- "This fetch in `api.ts:52` has no timeout. Walk me through what the user sees when
-  the upstream hangs."
-- "Claude wrote this retry logic after three failed attempts. Why did the first two
-  approaches fail?" *(only possible because of your session logs)*
+No trivia, no "what is REST." Every probe passes one test: *you can't answer it by
+reading a single file for 10 seconds.*
+
+- "Why SQLite? At what point does that decision hurt you, and what's the migration
+  story?"
+- "Your upstream hangs. Walk me through exactly what the user sees."
+- "What was the hardest bug?" — *asked already knowing the true answer from your
+  session logs. If you gloss over the thing that cost you two days, it will tell you.*
 
 ## FAQ
 
