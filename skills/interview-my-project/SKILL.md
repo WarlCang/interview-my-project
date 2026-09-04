@@ -34,9 +34,22 @@ Every jab must be *earned by evidence* from the code or logs, not generic neggin
 And the coaching cards stay 100% constructive — the roast is the pressure test, the
 card is the payoff.
 
-This skill is self-contained and agent-agnostic: everything needed to run the full
-interview is in this file. It requires only the ability to read files, search the repo,
-and hold a conversation.
+## Runs on any agent
+
+This skill is self-contained and agent-agnostic — Claude Code, Codex, Cursor, Copilot,
+DeepSeek, OpenCode, anything that can **read files, write files, and hold a
+conversation**. Those three capabilities are the entire hard requirement; everything
+else is progressive enhancement with a mandatory fallback:
+
+| Capability | If available | If not |
+|---|---|---|
+| Shell (`grep`, `jq`) | fast log mining | read files directly; sample, never load whole files |
+| Subagents | delegate Phase 1 ingest | do the ingest inline |
+| Agent session logs | probe categories 7–8 | repo-only interview — still the full product |
+| This skill's `assets/` folder | readiness card from template | skip the card silently |
+
+Never tell the user a feature is missing because of which agent they run; degrade
+silently and deliver the best interview the environment allows.
 
 **Modes** (from the user's request; default is 8 questions): `quick` = 5 questions;
 `deep` = 12 plus one full data-flow trace; `focus <topic>` = all questions on that
@@ -108,16 +121,21 @@ everything. Resolve that asymmetry the way a real interview works:
 
 ### Mining agent session logs (the differentiator)
 
-Session transcripts contain the *reasoning* behind the code — abandoned approaches,
-error-fix cycles, decisions the user made or rubber-stamped. Look for them in order:
+Session history contains the *reasoning* behind the code — abandoned approaches,
+error-fix cycles, decisions the user made or rubber-stamped. Discovery, in order:
 
-- **Claude Code** (primary): `~/.claude/projects/<slug>/*.jsonl`, where `<slug>` is the
-  project's absolute path with separators replaced by dashes (e.g.
-  `-Users-jane-code-myapp`). List the directory and match the current working directory.
-  Each line is JSON; the signal is in `message.content` of `user`/`assistant` entries.
-- **OpenAI Codex CLI** (best-effort): `~/.codex/sessions/**/*.jsonl`.
-- Other tools: if the user names their agent, ask where it stores session history; if
-  nothing is found, run the repo-only interview — it is still the product.
+1. **Verified locations** — check both, whatever agent is running you:
+   - Claude Code: `~/.claude/projects/<slug>/*.jsonl`, where `<slug>` is the project's
+     absolute path with separators replaced by dashes (e.g. `-Users-jane-code-myapp`).
+     Each line is JSON; signal is in `message.content` of `user`/`assistant` entries.
+   - Codex CLI: `~/.codex/sessions/**/*.jsonl`.
+2. **The repo's own record** — agent-written progress logs, ADRs, `docs/` session
+   notes, `.specstory/`: often richer than raw transcripts and present regardless of
+   agent. Mine these with the same four signals.
+3. **Ask once** — other agents (Cursor, Copilot, DeepSeek, …) store history in
+   formats that vary and change; never guess or invent paths. One question — "where
+   does your agent keep session history for this project?" — then move on.
+4. **Nothing found** — run the repo-only interview. It is still the full product.
 
 Extract ONLY these four signals — do not attempt full-transcript understanding:
 

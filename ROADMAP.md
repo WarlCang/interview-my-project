@@ -20,7 +20,8 @@ bundles the skill and drives the user's own agent subscription. Still $0 infra.
 - Deterministic log parser with receipts (which decisions, from which lines)
 - Scorecard/readiness computed by code, not by the model
 - Ordinary-model floor: benchmark that cheap models still produce grounded questions
-- First-class Cursor / Codex / other-agent session-log support
+- First-class session-log support beyond Claude Code and Codex: Cursor, Copilot,
+  DeepSeek, and whatever the ecosystem ships next
 
 ## Later — v3
 

@@ -30,7 +30,7 @@
 
 ## 安装
 
-一行命令,任意 agent(Claude Code、Cursor、Codex CLI、OpenCode 等):
+一行命令,任意 agent(Claude Code、Cursor、Codex CLI、Copilot、DeepSeek、OpenCode 等):
 
 ```bash
 npx skills add WarlCang/interview-my-project -g
@@ -70,6 +70,10 @@ Claude 专属机制:把 `skills/interview-my-project/` 拷进你 agent 的 skill
 ```
 读取 skills/interview-my-project/SKILL.md 并遵照执行,针对这个仓库面试我。
 ```
+
+面试体验在所有 agent 上完全一致。哪里找得到会话历史,哪里就有基于历史的问题——
+Claude Code 和 Codex 的日志自动发现,仓库自带的记录(进度日志、ADR、会话笔记)在
+任何 agent 上都有效;什么都找不到时,你得到的是纯仓库版面试。
 
 ## 工作原理
 
@@ -112,8 +116,9 @@ Claude 专属机制:把 `skills/interview-my-project/` 拷进你 agent 的 skill
 **数据会离开我的电脑吗?** 不会。仓库、会话记录、计分卡全部本地,跑在你自己的
 agent 订阅上。
 
-**这个仓库没有 Claude Code 会话记录?** 照样能用——你会得到纯仓库版的面试,只是
-少了基于会话记录的那类问题。
+**这个仓库没有会话记录?** 照样能用——你会得到纯仓库版的面试,只是少了基于历史
+记录的那类问题。带有 agent 写下的进度笔记或 ADR 的仓库能找回其中大部分,任何
+agent 都一样。
 
 ## 路线图
 

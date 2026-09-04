@@ -35,7 +35,7 @@ This tool asks about exactly those.
 
 ## Install
 
-One line, any agent (Claude Code, Cursor, Codex CLI, OpenCode, …):
+One line, any agent (Claude Code, Cursor, Codex CLI, Copilot, DeepSeek, OpenCode, …):
 
 ```bash
 npx skills add WarlCang/interview-my-project -g
@@ -78,9 +78,10 @@ agent's skills directory, or just point any agent at the file:
 Read skills/interview-my-project/SKILL.md and follow it. Interview me about this repo.
 ```
 
-You'll get the same interview. The transcript-derived questions work best with Claude
-Code session logs (Codex CLI logs are supported best-effort); without logs you get the
-repo-only interview.
+The interview is identical on every agent. Session-log questions appear wherever
+history is found — Claude Code and Codex logs are auto-discovered, and the repo's own
+record (progress logs, ADRs, session notes) works on any agent; with nothing found
+you get the repo-only interview.
 
 ## How it works
 
@@ -133,8 +134,9 @@ this makes you *actually understand your own project* so you don't need any.
 **Does anything leave my machine?** No. Repo, transcripts, and scorecard are all local;
 it runs on your own Claude Code session.
 
-**No Claude Code session logs for this repo?** It still works — you get the repo-only
-interview, minus the transcript-derived questions.
+**No session logs for this repo?** It still works — you get the repo-only interview,
+minus the history-derived questions. Repos with agent-written progress notes or ADRs
+get most of them back, on any agent.
 
 ## Roadmap
 
