@@ -33,6 +33,11 @@ abandoned, the errors you fought through, the diffs you approved without reading
 
 This tool asks about exactly those.
 
+> **Why practice against an AI interviewer? Because your interviewer is already
+> using AI to prepare their questions.** They'll paste your repo into a model and
+> walk in with the exact probes this tool asks you first. Practicing against AI
+> isn't cheating the game — it's how the game is played now.
+
 ## Install
 
 One line, any agent (Claude Code, Cursor, Codex CLI, Copilot, DeepSeek, OpenCode, …):
