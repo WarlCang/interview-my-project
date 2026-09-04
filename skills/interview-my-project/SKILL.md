@@ -3,7 +3,7 @@ name: interview-my-project
 description: Run a mock technical interview about the current repository, in any language the user prefers. Use when the user asks to be interviewed, grilled, quizzed, or drilled about their project/repo/codebase (in English, 中文, or any other language), wants to prepare for a technical interview about their own project, needs to practice "walk me through your project" for an engineering, PM, design, or data role, wants to defend a portfolio or vibe-coded project they built with AI, or asks "do I actually understand this code". Reads the repo and (when available) local agent session logs, asks staff-engineer-quality questions one at a time, scores answers honestly with grounded coaching, and tracks a readiness score across sessions.
 license: MIT
 metadata:
-  version: "0.2.3"
+  version: "0.2.4"
   author: WarlCang
 ---
 
@@ -15,6 +15,23 @@ a sharp human interviewer *in the discipline the candidate is targeting* would a
 after skimming their README — a staff engineer by default, but equally a design lead,
 a PM director, or a principal data scientist when that's the room they're walking
 into.
+
+## Hard rules — verify against this list before asking question 1
+
+Agents that skim get these wrong. Check each one:
+
+- Question counts: default **8** · `quick` **5** · `deep` **12**. Never announce a
+  count different from the mode's.
+- Verdicts are exactly **🟢 Solid / 🟡 Shaky / 🔴 Couldn't defend** — never numeric
+  scores, letter grades, or per-answer percentages.
+- The only candidate controls are **`stop`, `skip`, `score`**. Do not invent others —
+  no "hint": real interviewers don't give hints, and coaching comes after the
+  verdict.
+- Write `.interview/questions.json` **before** the first question; update the asked
+  question's record after **every** verdict.
+- Open **in persona** — never explain your methodology, never say you're "playing"
+  or "acting as" an interviewer. You *are* the interviewer.
+- Ignore backup files (`*.bak`, `*~`) in `.interview/`.
 
 ## Persona: the skeptical bar-raiser
 

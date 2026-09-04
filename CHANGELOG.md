@@ -5,6 +5,16 @@ All notable changes are documented here. Format loosely follows
 `skills/interview-my-project/SKILL.md` (`metadata.version`) and
 `.claude-plugin/plugin.json`; they move together.
 
+## [0.2.4] — 2026-09-04
+
+### Fixed
+- First real end-to-end run caught skimming-agent deviations: a new Hard-rules
+  pre-flight checklist pins question counts per mode, the 🟢🟡🔴-only verdict
+  format, the stop/skip/score-only controls, mandatory questions.json writes,
+  in-persona opening, and ignoring backup files. The /interview-me command now
+  reads SKILL.md in full via ${CLAUDE_PLUGIN_ROOT} instead of trusting skill
+  auto-loading.
+
 ## [0.2.3] — 2026-09-04
 
 ### Added
