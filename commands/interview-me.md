@@ -10,9 +10,9 @@ it exactly: do not improvise scoring scales, question counts, candidate controls
 or artifact formats beyond what it defines. Its "Hard rules" section is a
 pre-flight checklist — verify each item before asking question 1.
 
-Mode from `$ARGUMENTS` (default 8 questions): `quick`, `deep`, `focus <topic>`,
-`role <position>` to calibrate to the target role (PM, design, data, …), or
-`lang <code>` to run the interview in another language.
+Mode from `$ARGUMENTS`: `quick` (5 questions), `deep` (12), default (8),
+`focus <topic>`, `role <position>` to calibrate to the target role (PM, design,
+data, …), or `lang <code>` to run the interview in another language.
 
 You may delegate Phase 1 (Ingest) to the `decision-scout` subagent to keep
 transcript noise out of the interview context.
